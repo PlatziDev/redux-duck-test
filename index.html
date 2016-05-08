@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>redux-duck-test by sergiodxa</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>redux-duck-test</h1>
+        <p>Helper functions for testing redux ducks made with redux-duck library</p>
+
+        <p class="view"><a href="https://github.com/sergiodxa/redux-duck-test">View the Project on GitHub <small>sergiodxa/redux-duck-test</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/sergiodxa/redux-duck-test/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/sergiodxa/redux-duck-test/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/sergiodxa/redux-duck-test">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="redux-duck-test" class="anchor" href="#redux-duck-test" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Redux Duck Test</h1>
+
+<p>Helper functions for testing redux ducks made with <a href="https://github.com/sergiodxa/redux-duck/">redux-duck</a> library.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre>npm i -D redux-duck-test</pre></div>
+
+<h2>
+<a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h2>
+
+<h3>
+<a id="test-action-type" class="anchor" href="#test-action-type" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test action type</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">testType</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>redux-duck-test<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> { <span class="pl-smi">ADD</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>../duck/messages<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">result</span> <span class="pl-k">=</span> <span class="pl-en">testType</span>({
+  expected<span class="pl-k">:</span> <span class="pl-c1">ADD</span>,
+  actionName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>ADD<span class="pl-pds">'</span></span>,
+  duckName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>messages<span class="pl-pds">'</span></span>,
+  moduleName<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>my-app<span class="pl-pds">'</span></span>,
+});</pre></div>
+
+<ul>
+<li>
+<code>testType</code> receive an object with the test specification.</li>
+<li>The <code>expected</code> key is your action type.</li>
+<li>The <code>actionName</code> key is the name of your action (eg. <code>ADD</code>).</li>
+<li>The <code>duckName</code> key is the name of your duck (eg. <code>messages</code>).</li>
+<li>The <code>moduleName</code> key is the name of your module (eg. <code>my-app</code>) (optional).</li>
+</ul>
+
+<h3>
+<a id="test-action-creator" class="anchor" href="#test-action-creator" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test action creator</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">testAction</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>redux-duck-test<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> { <span class="pl-smi">ADD</span>, <span class="pl-smi">add</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>../duck/messages<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">result</span> <span class="pl-k">=</span> <span class="pl-en">testAction</span>({
+  actionCreator<span class="pl-k">:</span> add,
+  payload<span class="pl-k">:</span> {
+    id<span class="pl-k">:</span> <span class="pl-c1">1</span>,
+    content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hello world!<span class="pl-pds">'</span></span>,
+  },
+  expected<span class="pl-k">:</span> {
+    type<span class="pl-k">:</span> <span class="pl-c1">ADD</span>,
+    payload<span class="pl-k">:</span> {
+      id<span class="pl-k">:</span> <span class="pl-c1">1</span>,
+      content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hello world!<span class="pl-pds">'</span></span>,
+    },
+  },
+});</pre></div>
+
+<ul>
+<li>
+<code>testAction</code> receive an object with the test specification.</li>
+<li>The <code>actionCreator</code> key is the action creator function to test.</li>
+<li>The <code>payload</code> key is the payload to send to the action creator.</li>
+<li>The <code>expected</code> key is the expected action object.</li>
+</ul>
+
+<h3>
+<a id="test-reducer" class="anchor" href="#test-reducer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test reducer</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">import</span> { <span class="pl-smi">testReducer</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>redux-duck-test<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> { <span class="pl-smi">Map</span> <span class="pl-k">as</span> <span class="pl-smi">map</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>immutable<span class="pl-pds">'</span></span>;
+<span class="pl-k">import</span> <span class="pl-smi">reducer</span>, { <span class="pl-smi">add</span> } <span class="pl-k">from</span> <span class="pl-s"><span class="pl-pds">'</span>../duck/messages<span class="pl-pds">'</span></span>;
+
+<span class="pl-k">const</span> <span class="pl-c1">result</span> <span class="pl-k">=</span> <span class="pl-en">testReducer</span>({
+  reducer,
+  state<span class="pl-k">:</span> <span class="pl-en">map</span>(),
+  action<span class="pl-k">:</span> <span class="pl-en">add</span>({
+    id<span class="pl-k">:</span> <span class="pl-c1">1</span>,
+    content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hello world<span class="pl-pds">'</span></span>,
+  }),
+  expected<span class="pl-k">:</span> <span class="pl-en">map</span>({
+    <span class="pl-s"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span><span class="pl-k">:</span> {
+      id<span class="pl-k">:</span> <span class="pl-c1">1</span>,
+      content<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>hello world<span class="pl-pds">'</span></span>,
+    },
+  }),
+});</pre></div>
+
+<ul>
+<li>
+<code>testReducer</code> receive an object with the test specification.</li>
+<li>The <code>reducer</code> key is the reducer to test.</li>
+<li>The <code>state</code> key is the initial state passed to the reducer.</li>
+<li>The <code>action</code> key is the action to perform in the reducer.</li>
+<li>The <code>expected</code> key is the expected next state.</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/sergiodxa">sergiodxa</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
