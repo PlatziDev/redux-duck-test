@@ -1,0 +1,55 @@
+{
+  "name": "redux-duck-test",
+  "version": "1.0.0",
+  "description": "Helper functions for testing redux ducks made with redux-duck library",
+  "main": "build/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint lib/index.js",
+    "prebuild": "npm run lint",
+    "build": "babel lib --out-dir build",
+    "pretest": "npm run build",
+    "test": "babel-node test/index.js | tap-spec",
+    "prepublish": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergiodxa/redux-duck-test.git"
+  },
+  "keywords": [
+    "redux",
+    "duck",
+    "test",
+    "helper"
+  ],
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sergiodxa/redux-duck-test/issues"
+  },
+  "homepage": "https://github.com/sergiodxa/redux-duck-test#readme",
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-cli": "6.7.5",
+    "babel-core": "6.7.6",
+    "babel-eslint": "6.0.3",
+    "babel-plugin-transform-es2015-block-scoping": "6.7.1",
+    "babel-plugin-transform-es2015-computed-properties": "6.6.5",
+    "babel-plugin-transform-es2015-destructuring": "6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.7.4",
+    "babel-plugin-transform-es2015-parameters": "6.7.0",
+    "babel-plugin-transform-es2015-shorthand-properties": "6.5.0",
+    "babel-plugin-transform-es2015-template-literals": "6.6.5",
+    "babel-plugin-transform-object-rest-spread": "6.6.5",
+    "eslint": "2.8.0",
+    "eslint-config-airbnb": "7.0.0",
+    "eslint-plugin-jsx-a11y": "0.6.2",
+    "eslint-plugin-react": "4.3.0",
+    "immutable": "3.8.1",
+    "redux-duck": "1.0.1",
+    "tap-spec": "4.1.1",
+    "tape": "4.5.1"
+  }
+}
