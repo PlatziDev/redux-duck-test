@@ -1,6 +1,6 @@
 {
   "name": "redux-duck-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper functions for testing redux ducks made with redux-duck library",
   "main": "build/index.js",
   "directories": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sergiodxa/redux-duck-test.git"
+    "url": "git+https://github.com/PlatziDev/redux-duck-test.git"
   },
   "keywords": [
     "redux",
@@ -24,12 +24,12 @@
     "test",
     "helper"
   ],
-  "author": "Sergio Daniel Xalambrí <sergio@xalambri.com.ar> (http://sergio.xalambri.com.ar/)",
+  "author": "Sergio Daniel Xalambrí <sergio@xalambri.xyz> (http://sergio.xalambri.xyz/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sergiodxa/redux-duck-test/issues"
+    "url": "https://github.com/PlatziDev/redux-duck-test/issues"
   },
-  "homepage": "https://github.com/sergiodxa/redux-duck-test#readme",
+  "homepage": "https://github.com/PlatziDev/redux-duck-test#readme",
   "devDependencies": {
     "babel": "6.5.2",
     "babel-cli": "6.7.5",
